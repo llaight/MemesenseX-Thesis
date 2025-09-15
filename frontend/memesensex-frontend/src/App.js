@@ -83,12 +83,12 @@ function App() {
       <Navbar />
 
       {/* Main Content */}
-      <div className="max-w-6xl mx-auto px-6 py-12">
+      <main className="max-w-6xl mx-auto px-6 py-12">
         {/* Main Analysis Section */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           
           {/* Left Column - Input Image */}
-          <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+          <section className="bg-white rounded-2xl shadow-xl overflow-hidden" aria-label="Image Upload Section">
             <div className="bg-gradient-to-r from-purple-600 to-blue-600 text-white p-4">
               <div className="flex items-center gap-2">
                 <div className="w-6 h-6 bg-white/20 rounded-lg flex items-center justify-center">
@@ -103,16 +103,17 @@ function App() {
             
             <div className="p-6">
               {/* Drag and Drop Area */}
-              <div 
-                className={`border-2 border-dashed rounded-xl p-8 text-center transition-all duration-300 ${
-                  isDragOver 
-                    ? 'border-purple-400 bg-purple-50' 
-                    : 'border-gray-300 bg-gray-50 hover:border-purple-300 hover:bg-purple-25'
-                }`}
-                onDragOver={handleDragOver}
-                onDragLeave={handleDragLeave}
-                onDrop={handleDrop}
-              >
+              <form onSubmit={(e) => e.preventDefault()}>
+                <div 
+                  className={`border-2 border-dashed rounded-xl p-8 text-center transition-all duration-300 ${
+                    isDragOver 
+                      ? 'border-purple-400 bg-purple-50' 
+                      : 'border-gray-300 bg-gray-50 hover:border-purple-300 hover:bg-purple-25'
+                  }`}
+                  onDragOver={handleDragOver}
+                  onDragLeave={handleDragLeave}
+                  onDrop={handleDrop}
+                >
                 {image ? (
                   <img
                     src={image}
@@ -155,6 +156,7 @@ function App() {
                   </label>
                 </div>
               )}
+              </form>
 
               {/* Action Buttons */}
               <div className="mt-6 flex gap-3">
@@ -194,10 +196,10 @@ function App() {
                 </button>
               </div>
             </div>
-          </div>
+          </section>
 
           {/* Right Column - Analysis Results */}
-          <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+          <section className="bg-white rounded-2xl shadow-xl overflow-hidden" aria-label="Analysis Results Section">
             <div className="bg-gradient-to-r from-teal-500 to-green-500 text-white p-4">
               <div className="flex items-center gap-2">
                 <div className="w-6 h-6 bg-white/20 rounded-lg flex items-center justify-center">
@@ -366,7 +368,7 @@ function App() {
                 </div>
               )}
             </div>
-          </div>
+          </section>
         </div>
 
         {/* Progress Indicators */}
@@ -386,7 +388,7 @@ function App() {
             </div>
           </div>
         </div>
-      </div>
+      </main>
     </div>
   );
 }
