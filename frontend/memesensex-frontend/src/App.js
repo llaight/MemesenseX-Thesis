@@ -89,16 +89,16 @@ function App() {
           
           {/* Left Column - Input Image */}
           <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
-            <div className="bg-gradient-to-r from-purple-600 to-blue-600 text-white p-6">
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center">
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <div className="bg-gradient-to-r from-purple-600 to-blue-600 text-white p-4">
+              <div className="flex items-center gap-2">
+                <div className="w-6 h-6 bg-white/20 rounded-lg flex items-center justify-center">
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z"/>
                   </svg>
                 </div>
-                <h3 className="text-xl font-semibold">Input Image</h3>
+                <h3 className="text-lg font-semibold">Input Image</h3>
               </div>
-              <p className="text-white/80 text-sm mt-2">Upload your meme for AI analysis</p>
+              <p className="text-white/80 text-xs mt-1">Upload your meme for AI analysis</p>
             </div>
             
             <div className="p-6">
@@ -198,16 +198,16 @@ function App() {
 
           {/* Right Column - Analysis Results */}
           <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
-            <div className="bg-gradient-to-r from-teal-500 to-green-500 text-white p-6">
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center">
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <div className="bg-gradient-to-r from-teal-500 to-green-500 text-white p-4">
+              <div className="flex items-center gap-2">
+                <div className="w-6 h-6 bg-white/20 rounded-lg flex items-center justify-center">
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
                   </svg>
                 </div>
-                <h3 className="text-xl font-semibold">Analysis Results</h3>
+                <h3 className="text-lg font-semibold">Analysis Results</h3>
               </div>
-              <p className="text-white/80 text-sm mt-2">AI classification outcomes</p>
+              <p className="text-white/80 text-xs mt-1">AI classification outcomes</p>
             </div>
             
             <div className="p-6">
