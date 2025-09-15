@@ -1,5 +1,6 @@
 
 import './App.css';
+import Navbar from './components/Navbar';
 import {useState } from "react";
 
 function App() {
@@ -43,14 +44,12 @@ function App() {
       await new Promise(resolve => setTimeout(resolve, stages[i].duration));
     }
 
-    // Simulate results
+    // Simulate results - randomly choose between safe and explicit for demo
+    const isSafe = Math.random() > 0.3; // 70% chance of safe content
     setResults({
-      classification: "Safe Content",
-      confidence: 94.2,
+      classification: isSafe ? "Safe Content" : "Explicit Content",
       details: {
-        visualScore: 0.12,
-        textScore: 0.08,
-        overall: "safe"
+        overall: isSafe ? "safe" : "explicit"
       }
     });
 
@@ -80,36 +79,11 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-teal-50">
-      {/* Header Section */}
-      <div className="bg-gradient-to-r from-purple-600 via-blue-600 to-teal-500 text-white py-12">
-        <div className="max-w-6xl mx-auto px-6 text-center">
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
-              <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm0 4a1 1 0 011-1h12a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1V8z"/>
-              </svg>
-            </div>
-            <h1 className="text-4xl font-bold">MemeSensex</h1>
-          </div>
-          <p className="text-lg text-white/90 mb-2">⚡ AI-POWERED ANALYSIS ⚡</p>
-        </div>
-      </div>
+      {/* Navbar */}
+      <Navbar />
 
       {/* Main Content */}
       <div className="max-w-6xl mx-auto px-6 py-12">
-        {/* Multimodal Content Classification Section */}
-        <div className="bg-white rounded-2xl shadow-xl p-8 mb-8">
-          <div className="text-center">
-            <h2 className="text-2xl font-bold text-gray-800 mb-3 flex items-center justify-center gap-2">
-              ⚡ Multimodal Content Classification ⚡
-            </h2>
-            <p className="text-gray-600 max-w-3xl mx-auto">
-              Advanced AI system that analyzes both visual and textual elements in Tagalog memes to provide
-              accurate content classification with confidence scoring.
-            </p>
-          </div>
-        </div>
-
         {/* Main Analysis Section */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           
@@ -172,9 +146,12 @@ function App() {
                   />
                   <label 
                     htmlFor="file-upload"
-                    className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-3 rounded-xl font-medium cursor-pointer hover:from-purple-700 hover:to-blue-700 transition-all duration-300 inline-block"
+                    className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-3 rounded-xl font-medium cursor-pointer hover:from-purple-700 hover:to-blue-700 transition-all duration-300 inline-flex items-center gap-2"
                   >
-                    📁 Choose File
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"/>
+                    </svg>
+                    Choose File
                   </label>
                 </div>
               )}
@@ -196,7 +173,12 @@ function App() {
                       Processing...
                     </>
                   ) : (
-                    <>⚡ Classify Meme</>
+                    <>
+                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"/>
+                      </svg>
+                      Classify Meme
+                    </>
                   )}
                 </button>
                 <button
@@ -220,7 +202,7 @@ function App() {
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center">
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm0 4a1 1 0 011-1h12a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1V8z"/>
+                    <path fillRule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
                   </svg>
                 </div>
                 <h3 className="text-xl font-semibold">Analysis Results</h3>
@@ -281,42 +263,63 @@ function App() {
               ) : results ? (
                 // Results State
                 <div className="text-center space-y-6">
-                  <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto">
-                    <svg className="w-10 h-10 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                  <div className={`w-20 h-20 rounded-full flex items-center justify-center mx-auto ${
+                    results.details.overall === 'safe' ? 'bg-green-100' : 'bg-red-100'
+                  }`}>
+                    <svg className={`w-10 h-10 ${
+                      results.details.overall === 'safe' ? 'text-green-600' : 'text-red-600'
+                    }`} fill="currentColor" viewBox="0 0 20 20">
+                      {results.details.overall === 'safe' ? (
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                      ) : (
+                        <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/>
+                      )}
                     </svg>
                   </div>
                   
                   <div>
-                    <h4 className="text-xl font-semibold text-gray-800 mb-2">Analysis Complete</h4>
-                    <div className="bg-gray-50 rounded-xl p-4 space-y-3">
+                    <h4 className="text-xl font-semibold text-gray-800 mb-4">Analysis Complete</h4>
+                    <div className="bg-gray-50 rounded-xl p-4">
                       <div className="flex justify-between items-center">
                         <span className="font-medium text-gray-700">Classification:</span>
                         <span className={`font-bold ${results.details.overall === 'safe' ? 'text-green-600' : 'text-red-600'}`}>
                           {results.classification}
                         </span>
                       </div>
-                      <div className="flex justify-between items-center">
-                        <span className="font-medium text-gray-700">Confidence:</span>
-                        <span className="font-bold text-blue-600">{results.confidence}%</span>
+                    </div>
+                  </div>
+
+                  {/* Classification Indicator */}
+                  <div className="pt-4">
+                    <div className="flex items-start gap-3 text-left">
+                      <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
+                        results.details.overall === 'safe' ? 'bg-green-100' : 'bg-red-100'
+                      }`}>
+                        <div className={`w-3 h-3 rounded-full ${
+                          results.details.overall === 'safe' ? 'bg-green-600' : 'bg-red-600'
+                        }`}></div>
                       </div>
-                      <div className="w-full bg-gray-200 rounded-full h-2">
-                        <div 
-                          className="bg-gradient-to-r from-blue-500 to-teal-500 h-2 rounded-full"
-                          style={{ width: `${results.confidence}%` }}
-                        ></div>
+                      <div>
+                        <span className="text-gray-700 font-medium block">{results.classification}</span>
+                        <span className="text-xs text-gray-500">
+                          {results.details.overall === 'safe' 
+                            ? 'Non-explicit, appropriate content' 
+                            : 'Sexual or inappropriate content detected'
+                          }
+                        </span>
                       </div>
                     </div>
                   </div>
 
-                  <div className="space-y-3 pt-4">
-                    <div className="flex items-center justify-between text-sm">
-                      <span className="text-gray-600">Visual Score:</span>
-                      <span className="font-medium">{results.details.visualScore}</span>
-                    </div>
-                    <div className="flex items-center justify-between text-sm">
-                      <span className="text-gray-600">Text Score:</span>
-                      <span className="font-medium">{results.details.textScore}</span>
+                  {/* Privacy Warning */}
+                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 mt-6">
+                    <div className="flex items-start gap-2">
+                      <svg className="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"/>
+                      </svg>
+                      <p className="text-xs text-blue-800">
+                        <strong>Privacy Notice:</strong> This system does not store, save, or retain any uploaded images or analysis data. All processing is done locally and securely.
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -336,27 +339,28 @@ function App() {
                     </p>
                   </div>
 
-                  {/* Feature Highlights */}
+                  {/* AI Models Information */}
                   <div className="space-y-4 pt-6">
-                    <div className="flex items-center gap-3 text-left">
+                    <h5 className="text-sm font-medium text-gray-500 mb-3 text-center">AI Models Used</h5>
+                    
+                    <div className="flex items-start gap-3 text-left">
                       <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
                         <div className="w-3 h-3 bg-purple-600 rounded-full"></div>
                       </div>
-                      <span className="text-gray-700 font-medium">Accurate Detection</span>
+                      <div>
+                        <span className="text-gray-700 font-medium block">ResNet18</span>
+                        <span className="text-xs text-gray-500">Image Analysis & Feature Extraction</span>
+                      </div>
                     </div>
                     
-                    <div className="flex items-center gap-3 text-left">
+                    <div className="flex items-start gap-3 text-left">
                       <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
                         <div className="w-3 h-3 bg-blue-600 rounded-full"></div>
                       </div>
-                      <span className="text-gray-700 font-medium">Fast Processing</span>
-                    </div>
-                    
-                    <div className="flex items-center gap-3 text-left">
-                      <div className="w-8 h-8 bg-teal-100 rounded-full flex items-center justify-center flex-shrink-0">
-                        <div className="w-3 h-3 bg-teal-600 rounded-full"></div>
+                      <div>
+                        <span className="text-gray-700 font-medium block">TagalogBERT</span>
+                        <span className="text-xs text-gray-500">Tagalog Text Processing & Understanding</span>
                       </div>
-                      <span className="text-gray-700 font-medium">Confidence Scoring</span>
                     </div>
                   </div>
                 </div>
